@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ product.name }} - MyStore{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'products:list' %}">Products</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <!-- Product Image -->
+    <div class="col-md-6 mb-4 mb-md-0">
+        <div class="card border-0 bg-transparent">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" class="product-detail-img rounded" alt="{{ product.name }}">
+            {% else %}
+                <img src="{% static 'images/placeholder.png' %}" class="product-detail-img rounded" alt="No image available">
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="col-md-6">
+        <h1 class="display-4">{{ product.name }}</h1>
+        <h2 class="text-primary my-3">${{ product.price }}</h2>
+        <p class="lead text-muted">{{ product.description }}</p>
+        
+        <hr class="my-4">
+
+        <form action="{% url 'cart:add' product.id %}" method="post" class="d-flex gap-3 align-items-center">
+            {% csrf_token %}
+            <div class="form-floating" style="width: 100px;">
+                <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control">
+                <label for="quantity">Qty</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg px-4">Add to Cart</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

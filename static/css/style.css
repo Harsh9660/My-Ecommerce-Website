@@ -1,1 +1,88 @@
-/* Add your styles here */
+/* Dark Purple Theme Variables */
+:root {
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #b0b0b0;
+    --primary-purple: #bb86fc;
+    --primary-hover: #9f65e0;
+    --secondary-purple: #3700b3;
+    --border-color: #333333;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+/* Navbar & Footer Overrides */
+.navbar {
+    background-color: var(--bg-card) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+footer {
+    background-color: var(--bg-card) !important;
+    border-top: 1px solid var(--border-color) !important;
+    color: var(--text-muted) !important;
+}
+
+/* Text Overrides */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-primary {
+    color: var(--primary-purple) !important;
+}
+
+/* Product Card Styling */
+.product-card {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-card .card-img-top {
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Button Overrides */
+.btn-primary {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+    color: #000; /* Dark text for contrast */
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: #000;
+}
+
+.btn-outline-primary {
+    color: var(--primary-purple);
+    border-color: var(--primary-purple);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-purple);
+    color: #000;
+}
+
+/* Product Detail Styling */
+.product-detail-img {
+    max-height: 500px;
+    object-fit: contain;
+    width: 100%;
+}
